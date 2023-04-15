@@ -2,18 +2,18 @@
 #include <vector>
 
 class CCelda {
-	//bool bandera;
+	bool bandera;
 	bool esMina;
 	bool abierto;
 
-	char x;
-	char y;
+	int x;
+	int y;
 	int minasAlrededorNum;
 
 
 public:
 	CCelda() = default;
-	CCelda(char vX, char vY);
+	CCelda(int vX, int vY);
 	void setMina();
 	bool getMina();
 	bool estaAbierto();
@@ -22,7 +22,8 @@ public:
 	int getMinasAlrededor();
 	bool abrir(std::vector<CCelda>& vCelda);
 	void reset();
-
+	void banderas();
+	bool getBandera();
 
 
 };

@@ -16,6 +16,8 @@ class CPantalla {
 
 public:
 	CPantalla();
+	void celdaBandera(unsigned int vX, unsigned int vY);
+	unsigned short  getBanderas();
 	void actualizarDimensiones(int filasNuevas, int columnasNuevas,int mina);
 	void dibujar(sf::RenderWindow& vVentana);
 	void cubrirCeldas(sf::RenderWindow vVentana);

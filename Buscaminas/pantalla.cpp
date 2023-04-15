@@ -1,5 +1,7 @@
 #include "getCelda.h"
 #include <iostream>
+#include <Windows.h>
+
 
 
 CPantalla::CPantalla():
@@ -19,6 +21,23 @@ CPantalla::CPantalla():
 	}
 	reinicio();
 
+}
+
+unsigned short CPantalla::getBanderas() {
+	unsigned short  banderasTot = 0;
+	for (CCelda& celda : celdas)
+	{
+		banderasTot += celda.getBandera();
+	}
+
+	return banderasTot;
+}
+
+void CPantalla:: celdaBandera(unsigned int vX, unsigned int vY) {
+	if (0 == perdiste)
+	{
+		getCelda(vX, vY, celdas)->banderas();
+	}
 }
 
 void CPantalla::reinicio() {
@@ -60,12 +79,12 @@ void CPantalla::abrirCeldas(char vX, char vY) {
 		}
 	}
 
-	if (0 == perdiste/* && 0 == getCelda(vX, vY, celdas)->get_is_flagged()*/)
+	if (0 == perdiste && 0 == getCelda(vX, vY, celdas)->getBandera())
 	{
 		if (1 == getCelda(vX, vY, celdas)->abrir(celdas))
 		{
 			perdiste = -1;
-			printf("perdiste");
+			MessageBox(NULL, TEXT("Perdiste"), TEXT("yama"), MB_OK);
 
 		}
 		else
@@ -80,7 +99,7 @@ void CPantalla::abrirCeldas(char vX, char vY) {
 			if (minas == total_closed_cells)
 			{
 				perdiste = 1; 
-				printf("ganaste");
+				MessageBox(NULL, TEXT("Ganaste"), TEXT("Mensaje"), MB_OK);
 
 				
 			}
@@ -127,6 +146,13 @@ void CPantalla::dibujar(sf::RenderWindow& vVentana) {
 			else {
 				formaCelda.setFillColor(sf::Color(192, 192, 192));
 				vVentana.draw(formaCelda);
+				if (1 == getCelda(i, j, celdas)->getBandera()) {
+					botonesabiertosSprite.setPosition(static_cast<float>(tamanioCelda * i), static_cast<float>(tamanioCelda * j));
+					botonesabiertosSprite.setTextureRect(sf::IntRect(0, 0, tamanioCelda, tamanioCelda));
+
+					vVentana.draw(botonesabiertosSprite);
+				}
+
 
 			}
 
@@ -182,16 +208,18 @@ for (int i = 0; i < newRows; i++) {
 	}
 }
 
-// Calcular el número de minas adyacentes para cada celda en el nuevo vector
-for (CCelda& cell : newCeldas) {
-	cell.minasAlrededor(newCeldas);
-}
+
 
 // Liberar la memoria del vector anterior.
 celdas.clear();
 
 // Asignar el nuevo vector a la variable del vector.
 celdas = newCeldas;
+
+// Calcular el número de minas adyacentes para cada celda en el nuevo vector
+for (CCelda& cell : newCeldas) {
+	cell.minasAlrededor(newCeldas);
+}
 
 // Actualizar los tamaños de la pantalla y de las celdas.
 columnas = newColumns;

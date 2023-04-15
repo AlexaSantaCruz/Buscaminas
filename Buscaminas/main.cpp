@@ -21,7 +21,6 @@ int main()
 	int columna=0;
 	int fila=0;
 	int mina=0;
-	CPantalla objPantalla;
 	switch (dificultad)
 	{
 	case 1:

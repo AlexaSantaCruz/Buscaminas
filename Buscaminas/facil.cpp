@@ -72,7 +72,7 @@ void dificultadFacil(int fila, int col, int mine) {
 				case sf::Mouse::Right:
 				{
 					//Aca implementar bandera
-					//objPantalla.bandera(mouse_cell_x, mouse_cell_y);
+					objPantalla.celdaBandera(mouseX, mouseY);
 				}
 				}
 			}

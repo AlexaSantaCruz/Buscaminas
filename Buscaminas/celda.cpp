@@ -2,7 +2,7 @@
 
 
 
-CCelda::CCelda(char vX, char vY):
+CCelda::CCelda(int vX, int vY):
 	x(vX),
 	y(vY)
 {
@@ -72,7 +72,19 @@ void CCelda::minasAlrededor(std::vector<CCelda>& vCelda) {
 }
 
 void CCelda::reset() {
+	bandera = 0;
 	esMina = 0;
 	abierto = 0;
 
+}
+
+bool CCelda::getBandera() {
+	return bandera;
+}
+
+void CCelda::banderas() {
+	if (0 == estaAbierto()) {
+		bandera = 1 - bandera;
+
+	}
 }
