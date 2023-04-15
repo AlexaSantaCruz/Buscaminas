@@ -13,33 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\facil">
+      <UniqueIdentifier>{eeb5d67d-4fec-4e33-93b7-24b2caefa3da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\facil">
+      <UniqueIdentifier>{1808af01-255a-4107-8fbb-90fe8607a98c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\medio">
+      <UniqueIdentifier>{cb851f2e-40a8-4e2f-9dcf-423b48ff69fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pantalla.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="celda.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\facil</Filter>
+    </ClCompile>
+    <ClCompile Include="facil.cpp">
+      <Filter>Source Files\facil</Filter>
     </ClCompile>
     <ClCompile Include="getCelda.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\facil</Filter>
+    </ClCompile>
+    <ClCompile Include="pantalla.cpp">
+      <Filter>Source Files\facil</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="filasColumnas.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="pantalla.h">
+      <Filter>Header Files\facil</Filter>
+    </ClInclude>
+    <ClInclude Include="facil.h">
+      <Filter>Header Files\facil</Filter>
     </ClInclude>
     <ClInclude Include="celda.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\facil</Filter>
     </ClInclude>
-    <ClInclude Include="pantalla.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="filasColumnas.h">
+      <Filter>Header Files\facil</Filter>
     </ClInclude>
     <ClInclude Include="getCelda.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\facil</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #include "getCelda.h"
 
 
+
 CCelda::CCelda(char vX, char vY):
 	x(vX),
 	y(vY)
@@ -73,6 +74,5 @@ void CCelda::minasAlrededor(std::vector<CCelda>& vCelda) {
 void CCelda::reset() {
 	esMina = 0;
 	abierto = 0;
-
 
 }

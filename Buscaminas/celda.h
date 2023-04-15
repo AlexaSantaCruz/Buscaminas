@@ -12,12 +12,13 @@ class CCelda {
 
 
 public:
+	CCelda() = default;
 	CCelda(char vX, char vY);
 	void setMina();
 	bool getMina();
 	bool estaAbierto();
 
-	void minasAlrededor(std::vector<CCelda>&vCelda);
+	void minasAlrededor(std::vector<CCelda>& vCelda);
 	int getMinasAlrededor();
 	bool abrir(std::vector<CCelda>& vCelda);
 	void reset();

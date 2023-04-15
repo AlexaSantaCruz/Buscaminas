@@ -143,12 +143,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="celda.cpp" />
+    <ClCompile Include="facil.cpp" />
     <ClCompile Include="getCelda.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pantalla.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="celda.h" />
+    <ClInclude Include="facil.h" />
     <ClInclude Include="filasColumnas.h" />
     <ClInclude Include="getCelda.h" />
     <ClInclude Include="pantalla.h" />

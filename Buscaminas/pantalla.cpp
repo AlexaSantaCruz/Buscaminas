@@ -1,7 +1,9 @@
 #include "getCelda.h"
+#include <iostream>
 
 
-CPantalla::CPantalla() :
+CPantalla::CPantalla():
+
 	perdiste(1),
 	random_engine(random_device())
 {	
@@ -26,11 +28,12 @@ void CPantalla::reinicio() {
 			celda.reset();
 		}
 	}
+	
 }
 
 void CPantalla::abrirCeldas(char vX, char vY) {
 	
-	printf("%i",primerClickJuego);
+
 	if (0==primerClickJuego) {
 		std::uniform_int_distribution<short> enX(0, columnas - 1);
 		std::uniform_int_distribution<short> enY(0, filas - 1);
@@ -92,7 +95,6 @@ void CPantalla::dibujar(sf::RenderWindow& vVentana) {
 	sf::Texture texturaIconos;
 	texturaIconos.loadFromFile("imagenes/tiles16Bits.png");
 	botonesabiertosSprite.setTexture(texturaIconos);
-
 
 
 	for (int i = 0; i < columnas; i++) {
@@ -159,7 +161,6 @@ void CPantalla::dibujar(sf::RenderWindow& vVentana) {
 						botonesabiertosSprite.setTextureRect(sf::IntRect(tamanioCelda * minasAlr, 0, tamanioCelda, tamanioCelda));
 
 						vVentana.draw(botonesabiertosSprite);
-						printf("%i", minasAlr);
 					}
 				}
 
@@ -168,4 +169,32 @@ void CPantalla::dibujar(sf::RenderWindow& vVentana) {
 			}
 		}
 	}
+}
+
+void CPantalla::actualizarDimensiones(int newColumns, int newRows, int mina){
+	// Crear un nuevo vector con la nueva capacidad deseada.
+	std::vector<CCelda> newCeldas(newColumns * newRows);
+
+// Crear una nueva celda para cada índice en el nuevo vector.
+for (int i = 0; i < newRows; i++) {
+	for (int j = 0; j < newColumns; j++) {
+		newCeldas[i * newColumns + j] = CCelda(j, i);
+	}
+}
+
+// Calcular el número de minas adyacentes para cada celda en el nuevo vector
+for (CCelda& cell : newCeldas) {
+	cell.minasAlrededor(newCeldas);
+}
+
+// Liberar la memoria del vector anterior.
+celdas.clear();
+
+// Asignar el nuevo vector a la variable del vector.
+celdas = newCeldas;
+
+// Actualizar los tamaños de la pantalla y de las celdas.
+columnas = newColumns;
+filas = newRows;
+
 }
